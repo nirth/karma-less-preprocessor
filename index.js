@@ -27,7 +27,7 @@ var createLessPreprocessor = function (args, config, logger, helper) {
   return function (content, file, done) {
     var result = null;
 
-    log.debug('Processing "%s".', file.originalPath);
+    log.info('Processing "%s".', file.originalPath);
     file.path = transformPath(file.originalPath);
 
     try {
