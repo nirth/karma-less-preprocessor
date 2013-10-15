@@ -27,14 +27,12 @@ var createLessPreprocessor = function (args, config, logger, helper) {
   }
 
   return function (content, file, done) {
-    var result = null;
-
     log.info("lessPreprocessor");
     log.info('Processing "%s".', file.originalPath);
     file.path = transformPath(file.originalPath);
 
     try {
-      result = less.render(content, rendered.bind(null, done));
+      less.render(content, rendered.bind(null, done));
     } catch (error) {
       log.error('%s\n  at %s', e.message, file.originalPath);
       return;
@@ -44,8 +42,7 @@ var createLessPreprocessor = function (args, config, logger, helper) {
 
 createLessPreprocessor.$inject = ['args', 'config.lessPreprocessor', 'logger', 'helper'];
 
-// Publish DI Module
-
+// PUBLISH DI MODULE
 module.exports = {
   'preprocessor:less': ['factory', createLessPreprocessor]
 };
