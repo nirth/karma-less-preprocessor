@@ -1,6 +1,6 @@
 {
   "name": "karma-less-preprocessor",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A Karma plugin. Compile LESS on the fly.",
   "main": "index.js",
   "scripts": {
