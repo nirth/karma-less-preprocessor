@@ -5,6 +5,7 @@ var less = require('less')
 // Module
 
 var createLessPreprocessor = function (args, config, logger, helper) {
+  log.info("Processing LESS files");
   config = confing || {};
 
   var log = logger.create('preprocessor:less');
@@ -20,6 +21,7 @@ var createLessPreprocessor = function (args, config, logger, helper) {
     if (error !== null && error !== undefined) {
       log.error('%s\n', error);
     } else {
+      log.info("Processed");
       done(css);
     }
   }
@@ -27,6 +29,7 @@ var createLessPreprocessor = function (args, config, logger, helper) {
   return function (content, file, done) {
     var result = null;
 
+    log.info("lessPreprocessor");
     log.info('Processing "%s".', file.originalPath);
     file.path = transformPath(file.originalPath);
 
