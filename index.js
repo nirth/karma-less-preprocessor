@@ -45,7 +45,6 @@ createLessPreprocessor.$inject = ['args', 'config.lessPreprocessor', 'logger', '
 // PUBLISH DI MODULE
 module.exports = {
   'preprocessor:less': ['factory', createLessPreprocessor]
-};
 
 
 
