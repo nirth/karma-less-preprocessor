@@ -8,7 +8,7 @@
     var log = logger.create('preprocessor:less');
     log.info("Processing LESS files");
 
-    var tranformPath = args.transformPath || config.transformPath || function (filePath) {
+    var transformPath = args.transformPath || config.transformPath || function (filePath) {
       return filePath.replace(/\.less$/, '.css');
     };
 
@@ -24,7 +24,7 @@
     return function (content, file, done) {
       log.info("lessPreprocessor");
       log.info('Processing "%s".', file.originalPath);
-      file.path = tranformPath(file.originalPath);
+      file.path = transformPath(file.originalPath);
 
       try {
         less.render(content, rendered.bind(null, done));
@@ -41,4 +41,8 @@
   module.exports = {
     'preprocessor:less': ['factory', createLessPreprocessor]
   };
-})(require('less'), require('path'), module);
+})(
+  require('less'),
+  require('path'),
+  module
+);
