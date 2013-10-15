@@ -1,0 +1,35 @@
+{
+  "name": "karma-less-preprocessor",
+  "version": "0.1.0",
+  "description": "A Karma plugin. Compile LESS on the fly.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/karma-runner/karma-less-preprocessor.git"
+  },
+  "keywords": [
+    "karma-plugin",
+    "karma-preprocessor",
+    "less",
+    "lesscss",
+    "less-css"
+  ],
+  "author": "David Sergey <nirth.furzahad@gmail.com>",
+  "dependencies": {
+    "less": "1.4.2"
+  },
+  "peerDependencies": {
+    "karma": ">=0.10"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-npm": "~0.0.2",
+    "grunt-bump": "~0.0.7",
+    "grunt-auto-release": "~0.0.2"
+  },
+  "contributors": ["David Sergey <nirth.furzahad@gmail.com>"]
+}
