@@ -1,6 +1,6 @@
 {
   "name": "karma-less-preprocessor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Karma plugin. Compile LESS on the fly.",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/karma-runner/karma-less-preprocessor.git"
+    "url": "git://github.com/nirth/karma-less-preprocessor.git"
   },
   "keywords": [
     "karma-plugin",
