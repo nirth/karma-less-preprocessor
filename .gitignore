@@ -6,7 +6,6 @@
 *.exe
 *.o
 *.so
-*.js
 *.css
 
 # Packages #
