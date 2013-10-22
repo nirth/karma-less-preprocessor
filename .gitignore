@@ -1,1 +1,64 @@
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.js
+*.css
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.gz
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# IDE Files #
+#############
+.idea
+*.iml
+
+# Dependencies #
+################
+node_modules
+.vagrant
+.vagrant*
+.grunt
+
+.jenkins/**/*.json
+.jenkins/**/*.xml
+.jenkins
+cobertura-coverage.xml
+
+
+# Project Specific #
+####################
+!README.md # Always include README files in.
+!.gitkeep  # Alpays include .gitkeep files to maintain folder structure.
+
+spec-runner.html
 node_modules
