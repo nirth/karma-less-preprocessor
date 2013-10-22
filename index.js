@@ -1,11 +1,13 @@
 var less = require('less'),
     Parser = less.Parser,
-    path = require('path');
+    path = require('path'),
+    fs = require('fs');
 
 var createLessPreprocessor = function (args, config, logger, helper) {
   config = config || {};
   var options = config.options || {
-    compress: false
+    compress: false,
+    save: false
   };
 
   var log = logger.create('preprocessor:less');
@@ -14,11 +16,25 @@ var createLessPreprocessor = function (args, config, logger, helper) {
     return filePath.replace(/\.less$/, '.css');
   };
 
-  var rendered = function (done, error, css) {
+  var rendered = function (done, filePath, error, css) {
     if (error !== null && error !== undefined) {
       log.error('Error:%s\n', error);
     } else {
-      done(css.toCSS({compress: options.compress}));
+      content = css.toCSS({compress: options.compress})
+      if (options.save) {
+        var p = path.resolve(filePath.replace(/\/([\.a-zA-Z0-9\-\_]+).css$/, '/'));
+        helper.mkdirIfNotExists(p, function () {
+          var n = filePath.match(/[a-zA-Z\-\.\_]+.css$/).reverse()[0];
+          fs.writeFile(path.join(p, n), content, 'utf-8', function (error) {
+            if (error) {
+              log.error("Error:%s", error);
+            }
+            done(content);
+          });
+        });
+      } else {
+        done(content);
+      }
     }
   };
 
@@ -30,7 +46,7 @@ var createLessPreprocessor = function (args, config, logger, helper) {
     });
 
     try {
-      parser.parse(content, rendered.bind(null, done));
+      parser.parse(content, rendered.bind(null, done, file.path));
     } catch (error) {
       log.error('%s\n  at %s', error.message, file.originalPath);
       return;
