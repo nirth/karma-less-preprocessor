@@ -5,11 +5,13 @@ var less = require('less'),
 
 var createLessPreprocessor = function (args, config, logger, helper) {
   config = config || {};
+
   var options = config.options || {
     compress: false,
     save: false
   };
-  options.additionalData = options.additionalData || {};
+
+  var additionalData = config.additionalData || {};
 
   var log = logger.create('preprocessor:less');
 
@@ -47,7 +49,7 @@ var createLessPreprocessor = function (args, config, logger, helper) {
     });
 
     try {
-      parser.parse(content, rendered.bind(null, done, file.path), options.additionalData);
+      parser.parse(content, rendered.bind(null, done, file.path), additionalData);
     } catch (error) {
       log.error('%s\n  at %s', error.message, file.originalPath);
       return;
