@@ -9,6 +9,7 @@ var createLessPreprocessor = function (args, config, logger, helper) {
     compress: false,
     save: false
   };
+  options.additionalData = options.additionalData || {};
 
   var log = logger.create('preprocessor:less');
 
@@ -46,7 +47,7 @@ var createLessPreprocessor = function (args, config, logger, helper) {
     });
 
     try {
-      parser.parse(content, rendered.bind(null, done, file.path));
+      parser.parse(content, rendered.bind(null, done, file.path), options.additionalData);
     } catch (error) {
       log.error('%s\n  at %s', error.message, file.originalPath);
       return;
