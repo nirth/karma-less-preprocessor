@@ -8,7 +8,7 @@
  * `save`: [`Boolean`] Indicates whether result of compilation should be saved in project directory.
  * `paths`: [`Array`] of paths to folders that should be used for file lookup when using `@import`.
  * `compress`: [`Boolean`] Indicates whether css should be compressed or not.
- * `additionalData`:`Object` which can contain the `Object` modifyVars and/or the `Object` globalVars. With those, you can tell the less compiler to add global Variables or modify existing ones during compilation.
+ * `additionalData`:`Object` which can contain the `Object` modifyVars and/or the `Object` globalVars. With those you can tell the less compiler to add global variables or modify existing ones during compilation.
  
 ### Example configuration
 
