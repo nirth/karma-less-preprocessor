@@ -13,7 +13,7 @@
 ### Example configuration
 
 	module.exports = (config) -> config.set {
-	        basePath: 'src/'
+	        basePath: 'src'
 	        preprocessors:
 	                '**/*.coffee': ['coffee']
 	                'resources/**/*.less': ['less']
@@ -31,7 +31,7 @@
 	
 	        lessPreprocessor:
 	                options:
-	                        paths: ['src/resources/less']
+	                        paths: ['resources/less']
 	                        save: true
 	                additionalData:
 	                        modifyVars:
