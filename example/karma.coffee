@@ -1,5 +1,5 @@
 module.exports = (config) -> config.set {
-	basePath: 'src/'
+	basePath: 'src'
 	preprocessors:
 		'**/*.coffee': ['coffee']
 		'resources/**/*.less': ['less']
@@ -17,7 +17,7 @@ module.exports = (config) -> config.set {
 
 	lessPreprocessor:
 		options:
-			paths: ['src/resources/less']
+			paths: ['resources/less']
 			save: true
 		additionalData:
 			modifyVars:

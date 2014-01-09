@@ -3,7 +3,7 @@ var less = require('less'),
     path = require('path'),
     fs = require('fs');
 
-var createLessPreprocessor = function (args, config, logger, helper) {
+var createLessPreprocessor = function (args, config, basePath, logger, helper) {
   config = config || {};
 
   var options = config.options || {
@@ -44,6 +44,12 @@ var createLessPreprocessor = function (args, config, logger, helper) {
   return function (content, file, done) {
     file.path = transformPath(file.originalPath);
 
+    if(options.paths) {
+      for (importPath in options.paths) {
+        options.paths[importPath] = basePath + '/' + options.paths[importPath];
+      }
+    }
+
     var parser = new Parser({
       paths: options.paths
     });
@@ -57,7 +63,7 @@ var createLessPreprocessor = function (args, config, logger, helper) {
   };
 };
 
-createLessPreprocessor.$inject = ['args', 'config.lessPreprocessor', 'logger', 'helper'];
+createLessPreprocessor.$inject = ['args', 'config.lessPreprocessor', 'config.basePath', 'logger', 'helper'];
 
 // PUBLISH DI MODULE
 module.exports = {
