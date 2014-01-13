@@ -1,12 +1,12 @@
 module.exports = (config) -> config.set {
-	basePath: ''
+	basePath: 'src'
 	preprocessors:
-		'src/**/*.coffee': ['coffee']
-		'src/resources/**/*.less': ['less']
+		'**/*.coffee': ['coffee']
+		'resources/**/*.less': ['less']
 
 	files: [
-		'src/**/*.coffee'
-		'src/resources/less/index.less'
+		'**/*.coffee'
+		'resources/less/index.less'
 	]
 
 	coffeePreprocessor:
@@ -17,8 +17,14 @@ module.exports = (config) -> config.set {
 
 	lessPreprocessor:
 		options:
-			paths: ['src/resources/less']
+			paths: ['resources/less']
 			save: true
+		additionalData:
+			modifyVars:
+				'bodyColor': 'grey'
+				'secondBoxColor': 'blue'
+			globalVars:
+				'globalBoxColor': 'red'
 		transformPath: (path) -> path.replace(/\.less$/, '.compiled.css')
 
 	

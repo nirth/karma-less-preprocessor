@@ -8,43 +8,50 @@
  * `save`: [`Boolean`] Indicates whether result of compilation should be saved in project directory.
  * `paths`: [`Array`] of paths to folders that should be used for file lookup when using `@import`.
  * `compress`: [`Boolean`] Indicates whether css should be compressed or not.
+ * `additionalData`:`Object` which can contain the `Object` modifyVars and/or the `Object` globalVars. With those you can tell the less compiler to add global variables or modify existing ones during compilation.
  
 ### Example configuration
 
 	module.exports = (config) -> config.set {
-		basePath: ''
-		preprocessors:
-			'src/**/*.coffee': ['coffee']
-			'src/resources/**/*.less': ['less']
+	        basePath: 'src'
+	        preprocessors:
+	                '**/*.coffee': ['coffee']
+	                'resources/**/*.less': ['less']
 	
-		files: [
-			'src/**/*.coffee'
-			'src/resources/less/index.less'
-		]
-
-		coffeePreprocessor:
-			options:
-				bare: true
-				sourceMap: false
-			transformPath: (path) -> path.replace(/\.coffee$/, '.js')
+	        files: [
+	                '**/*.coffee'
+	                'resources/less/index.less'
+	        ]
 	
-		lessPreprocessor:
-			options:
-				paths: ['src/resources/less']
-				save: true
-			transformPath: (path) -> path.replace(/\.less$/, '.compiled.css')
+	        coffeePreprocessor:
+	                options:
+	                        bare: true
+	                        sourceMap: false
+	                transformPath: (path) -> path.replace(/\.coffee$/, '.js')
 	
-		
-		browsers: ['Chrome']
-		captureTimeout: 6000
-		hostname: 'localhost'
-		port: 9876
+	        lessPreprocessor:
+	                options:
+	                        paths: ['resources/less']
+	                        save: true
+	                additionalData:
+	                        modifyVars:
+	                                'bodyColor': 'grey'
+	                                'secondBoxColor': 'blue'
+	                        globalVars:
+	                                'globalBoxColor': 'red'
+	                transformPath: (path) -> path.replace(/\.less$/, '.compiled.css')
 	
-		plugins: [
-			'karma-coffee-preprocessor'
-			'karma-less-preprocessor'
-			'karma-chrome-launcher'
-		]
+	        
+	        browsers: ['Chrome']
+	        captureTimeout: 6000
+	        hostname: 'localhost'
+	        port: 9876
 	
-		singleRun: false
+	        plugins: [
+	                'karma-coffee-preprocessor'
+	                'karma-less-preprocessor'
+	                'karma-chrome-launcher'
+	        ]
+	
+	        singleRun: false
 	}
