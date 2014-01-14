@@ -42,16 +42,15 @@ var createLessPreprocessor = function (args, config, basePath, logger, helper) {
   };
 
   return function (content, file, done) {
+    var translatedPaths = Array();
     file.path = transformPath(file.originalPath);
 
-    if(options.paths) {
-      for (importPath in options.paths) {
-        options.paths[importPath] = basePath + '/' + options.paths[importPath];
-      }
+    for (importPath in options.paths) {
+      translatedPaths[importPath] = basePath + '/' + options.paths[importPath];
     }
 
     var parser = new Parser({
-      paths: options.paths
+      paths: translatedPaths
     });
 
     try {
