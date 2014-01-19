@@ -5,15 +5,15 @@ var less = require('less'),
 
 var createLessPreprocessor = function (args, config, basePath, logger, helper) {
   var config = config || {},
-		options = config.options || {},
-		additionalData = config.additionalData || {},
-		translatedPaths = Array(),
-		log = logger.create('preprocessor:less');
-	
-	// provide default values
-	options.compress = config.options.compress || false;
-	options.save = config.options.save || false;
-	options.paths = config.options.paths || Array();
+      options = config.options || {},
+      additionalData = config.additionalData || {},
+      translatedPaths = Array(),
+      log = logger.create('preprocessor:less');
+
+  // provide default values
+  options.compress = config.options.compress || false;
+  options.save = config.options.save || false;
+  options.paths = config.options.paths || Array();
 
   var transformPath = args.transformPath || config.transformPath || function (filePath) {
     return filePath.replace(/\.less$/, '.css');
@@ -44,9 +44,9 @@ var createLessPreprocessor = function (args, config, basePath, logger, helper) {
   return function (content, file, done) {
     file.path = transformPath(file.originalPath);
 		
-		options.paths.forEach(function(element, index, array) {
-			translatedPaths[index] = basePath + '/' + element;
-		});
+    options.paths.forEach(function(element, index, array) {
+      translatedPaths[index] = basePath + '/' + element;
+    });
 
     var parser = new Parser({
       paths: translatedPaths
