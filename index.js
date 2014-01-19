@@ -11,9 +11,9 @@ var createLessPreprocessor = function (args, config, basePath, logger, helper) {
       log = logger.create('preprocessor:less');
 
   // provide default values
-  options.compress = config.options.compress || false;
-  options.save = config.options.save || false;
-  options.paths = config.options.paths || Array();
+  options.compress = options.compress || false;
+  options.save = options.save || false;
+  options.paths = options.paths || Array();
 
   var transformPath = args.transformPath || config.transformPath || function (filePath) {
     return filePath.replace(/\.less$/, '.css');
