@@ -1,7 +1,8 @@
 var less = require('less'),
     Parser = less.Parser,
     path = require('path'),
-    fs = require('fs');
+    fs = require('fs'),
+    util = require('util');
 
 var createLessPreprocessor = function (args, config, basePath, logger, helper) {
   config = config || {};
@@ -49,9 +50,9 @@ var createLessPreprocessor = function (args, config, basePath, logger, helper) {
       translatedPaths[importPath] = basePath + '/' + options.paths[importPath];
     }
 
-    var parser = new Parser({
-      paths: translatedPaths
-    });
+    var parser = new Parser(util._extend({}, options, {
+      paths: translatedPaths,
+    }));
 
     try {
       parser.parse(content, rendered.bind(null, done, file.path), additionalData);
