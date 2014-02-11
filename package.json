@@ -19,7 +19,7 @@
   ],
   "author": "David Sergey <nirth.furzahad@gmail.com>",
   "dependencies": {
-    "less": "1.6.0"
+    "less": "~1.6"
   },
   "peerDependencies": {
     "karma": ">=0.10"
