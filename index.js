@@ -1,19 +1,15 @@
 var less = require('less'),
     Parser = less.Parser,
     path = require('path'),
-    fs = require('fs');
+    fs = require('fs'),
+    util = require('util');
 
 var createLessPreprocessor = function (args, config, basePath, logger, helper) {
   var config = config || {},
-      options = config.options || {},
+      options = util._extend({compress: false, save: false, paths: Array()}, config.options),
       additionalData = config.additionalData || {},
       translatedPaths = Array(),
       log = logger.create('preprocessor:less');
-
-  // provide default values
-  options.compress = options.compress || false;
-  options.save = options.save || false;
-  options.paths = options.paths || Array();
 
   var transformPath = args.transformPath || config.transformPath || function (filePath) {
     return filePath.replace(/\.less$/, '.css');
