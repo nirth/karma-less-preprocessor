@@ -17,7 +17,7 @@
     "lesscss",
     "less-css"
   ],
-  "author": "David Sergey <nirth.furzahad@gmail.com>",
+  "author": "David Sergey <nirth.furzahad@gmail.com>, Cloud Chen <cloudcmh@gmail.com>",
   "dependencies": {
     "less": "~1.7"
   },
