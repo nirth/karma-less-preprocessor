@@ -44,9 +44,9 @@ var createLessPreprocessor = function (args, config, basePath, logger, helper) {
       translatedPaths[index] = basePath + '/' + element;
     });
 
-    var parser = new Parser({
-      paths: translatedPaths
-    });
+    var parser = new Parser(util._extend({}, options, {
+      paths: translatedPaths,
+    }));
 
     try {
       parser.parse(content, rendered.bind(null, done, file.path), additionalData);
