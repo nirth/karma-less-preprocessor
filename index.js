@@ -4,8 +4,8 @@ var less = require('less'),
     fs = require('fs'),
     util = require('util');
 
-var createLessPreprocessor = function (args, config, basePath, logger, helper) {
-  var config = config || {},
+var createLessPreprocessor = function (args, configuration, basePath, logger, helper) {
+  var config = configuration || {},
       options = util._extend({compress: false, save: false, paths: Array()}, config.options),
       additionalData = config.additionalData || {},
       translatedPaths = Array(),
@@ -16,6 +16,7 @@ var createLessPreprocessor = function (args, config, basePath, logger, helper) {
   };
 
   var rendered = function (done, filePath, error, css) {
+    var content;
     if (error !== null && error !== undefined) {
       log.error('Error:%s\n', error);
     } else {
@@ -26,7 +27,7 @@ var createLessPreprocessor = function (args, config, basePath, logger, helper) {
           var n = filePath.match(/[a-zA-Z\-\.\_]+.css$/).reverse()[0];
           fs.writeFile(path.join(p, n), content, 'utf-8', function (error) {
             if (error) {
-              log.error("Error:%s", error);
+              log.error('Error:%s', error);
             }
             done(content);
           });
