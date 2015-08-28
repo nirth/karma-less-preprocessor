@@ -1,5 +1,4 @@
 var less = require('less'),
-    Parser = less.Parser,
     path = require('path'),
     fs = require('fs'),
     util = require('util');
@@ -15,12 +14,12 @@ var createLessPreprocessor = function (args, configuration, basePath, logger, he
     return filePath.replace(/\.less$/, '.css');
   };
 
-  var rendered = function (done, filePath, error, css) {
+  var rendered = function (done, filePath, error, content) {
     var content;
     if (error !== null && error !== undefined) {
       log.error('Error:%s\n', error);
     } else {
-      content = css.toCSS({compress: options.compress})
+      content = content.css;
       if (options.save) {
         var p = path.resolve(filePath.replace(/\/([\.a-zA-Z0-9\-\_]+).css$/, '/'));
         helper.mkdirIfNotExists(p, function () {
@@ -45,12 +44,12 @@ var createLessPreprocessor = function (args, configuration, basePath, logger, he
       translatedPaths[index] = basePath + '/' + element;
     });
 
-    var parser = new Parser(util._extend({}, options, {
+    var fullOptions = util._extend({}, options, additionalData, {
       paths: translatedPaths,
-    }));
+    });
 
     try {
-      parser.parse(content, rendered.bind(null, done, file.path), additionalData);
+      less.render(content, fullOptions, rendered.bind(null, done, file.path));
     } catch (error) {
       log.error('%s\n  at %s', error.message, file.originalPath);
       return;
