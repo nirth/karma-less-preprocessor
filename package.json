@@ -19,7 +19,7 @@
   ],
   "author": "David Sergey <nirth.furzahad@gmail.com>, Cloud Chen <cloudcmh@gmail.com>",
   "dependencies": {
-    "less": "~1.7"
+    "less": "~2.5"
   },
   "peerDependencies": {
     "karma": ">=0.10"
