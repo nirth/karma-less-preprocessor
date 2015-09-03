@@ -17,7 +17,7 @@ var createLessPreprocessor = function (args, configuration, basePath, logger, he
   var rendered = function (done, filePath, error, content) {
     var content;
     if (error !== null && error !== undefined) {
-      log.error('Error:%s\n', error);
+      log.error('Error parsing file:', error);
     } else {
       content = content.css;
       if (options.save) {
@@ -26,7 +26,7 @@ var createLessPreprocessor = function (args, configuration, basePath, logger, he
           var n = filePath.match(/[a-zA-Z\-\.\_]+.css$/).reverse()[0];
           fs.writeFile(path.join(p, n), content, 'utf-8', function (error) {
             if (error) {
-              log.error('Error:%s', error);
+              log.error('Error writing file:', error);
             }
             done(content);
           });
@@ -39,7 +39,7 @@ var createLessPreprocessor = function (args, configuration, basePath, logger, he
 
   return function (content, file, done) {
     file.path = transformPath(file.originalPath);
-		
+
     options.paths.forEach(function(element, index, array) {
       translatedPaths[index] = basePath + '/' + element;
     });
