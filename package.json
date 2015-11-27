@@ -1,6 +1,6 @@
 {
   "name": "karma-less-preprocessor",
-  "version": "0.2.2",
+  "version": "0.3.2",
   "description": "A Karma plugin. Compile LESS on the fly.",
   "main": "index.js",
   "scripts": {
@@ -31,5 +31,16 @@
     "grunt-bump": "~0.0.7",
     "grunt-auto-release": "~0.0.2"
   },
-  "contributors": ["David Sergey <nirth.furzahad@gmail.com>"]
+  "contributors": [
+    "nirth <nirth.furzahad@gmail.com>",
+    "r3dDoX <Patrick@Elfriede-Pro.local>",
+    "David <nirth.furzahad@example.com>",
+    "r3dDoX <patrick@walther-online.ch>",
+    "Patrick <Patrick@Elfriede-Pro.local>",
+    "Jason Bedard <jason+github@jbedard.ca>",
+    "Cloud Chen <cloudcmh@gmail.com>",
+    "marcbaechinger <marc.baechinger@gmail.com>",
+    "Tarun Kothuri <tkothuri@appnexus.com>",
+    "Harry Schmidt <me@goldibex.com>"
+  ]
 }
