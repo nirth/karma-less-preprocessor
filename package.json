@@ -18,18 +18,18 @@
     "less-css"
   ],
   "author": "David Sergey <nirth.furzahad@gmail.com>, Cloud Chen <cloudcmh@gmail.com>",
-  "dependencies": {
-    "less": "~2.5"
-  },
   "peerDependencies": {
-    "karma": ">=0.10"
+    "karma": ">=0.10",
+    "less": ">=2.5"
   },
   "license": "MIT",
   "devDependencies": {
-    "grunt": "~0.4.1",
+    "grunt": "~1.1.0",
+    "grunt-auto-release": "~0.0.2",
+    "grunt-bump": "^0.8.0",
     "grunt-npm": "~0.0.2",
-    "grunt-bump": "~0.0.7",
-    "grunt-auto-release": "~0.0.2"
+    "less": ">=2.5",
+    "karma": ">=0.10"
   },
   "contributors": [
     "nirth <nirth.furzahad@gmail.com>",
